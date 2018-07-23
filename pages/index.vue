@@ -2,7 +2,7 @@
   <section class="container-fluid">
     <div class="row justify-content-center">
       <div class="logo-title col-6 text-center">
-        <h1>Awesome {{getName}} Library</h1>
+        <h1>Awesome Library</h1>
       </div>
     </div>
     <div class="row navigation">
@@ -28,6 +28,10 @@ export default {
 </script>
 
 <style scoped>
+section {
+  font-family: "Acme", sans-serif;
+}
+
 .logo-title {
   position: absolute;
   width: 60%;
@@ -35,8 +39,11 @@ export default {
   color: #ffffff;
   padding: 32px;
   z-index: 2;
-  background-color: #2ecc71;
+  background-color: #4ac694;
   border-radius: 0 0 10px 10px;
+}
+.logo-title h1 {
+  font-size: 62px;
 }
 .navigation,
 .navigation div {

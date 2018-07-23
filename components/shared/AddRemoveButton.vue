@@ -1,11 +1,13 @@
 <template>
     <div :style="internalStyle" class="add">
-        <i v-if="bookAdded" @click.prevent="removeBook(bookId)" class="fas fa-check-circle"></i>
-        <i v-else @click.prevent="saveBook(bookId)" class="fas fa-plus-circle"></i>
+        <i v-if="bookAdded" @click.prevent.stop="removeBook(bookId)" class="fas fa-check-circle"></i>
+        <i v-else @click.prevent.stop="saveBook(bookId)" class="fas fa-plus-circle"></i>
     </div>
 </template>
 
 <script>
+import * as emailjs from "emailjs-com";
+
 export default {
   props: {
     bookAdded: {
@@ -23,6 +25,23 @@ export default {
   },
   methods: {
     saveBook(bookId) {
+      const book = this.$store.getters.getAllBooks.filter(
+        book => book.id == bookId
+      )[0];
+      const templateParams = {
+        book_title: book.title,
+        book_author: book.author
+      };
+      emailjs.init("user_fVCgwoD3pke2vl66QgyWs");
+      emailjs.send("gmail", "template_AQ4gOBDz", templateParams).then(
+        response => {
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        err => {
+          console.log("FAILED...", err);
+        }
+      );
+
       this.$store.commit("saveBook", bookId);
     },
     removeBook(bookId) {
@@ -34,8 +53,8 @@ export default {
 
 <style scoped>
 .add {
-  font-size: 45px;
-  color: #10e2d2;
+  font-size: 44px;
+  color: bisque;
   transition: all 0.5s;
 }
 
@@ -48,6 +67,6 @@ export default {
 }
 
 .fa-check-circle {
-  color: chartreuse;
+  color: #ffa055;
 }
 </style>

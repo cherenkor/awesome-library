@@ -20,7 +20,7 @@ const state = {
       title: "Volhv",
       author: "John Fowles",
       image:
-        "https://upload.wikimedia.org/wikipedia/en/e/ef/Themagus_cover.jpg",
+        "http://pics.cdn.librarything.com/picsizes/6c/8d/6c8d248f062f092597a77315777444341587343.jpg",
       filters: {
         genres: ["novel", "classic", "non-fiction"],
         views: 5,

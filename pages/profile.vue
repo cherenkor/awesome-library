@@ -3,7 +3,7 @@
         <Sidebar/>
         <div class="main">
             <Topbar/>
-            <Content/>
+            <nuxt/>
         </div>
     </div>
 </template>
@@ -11,13 +11,11 @@
 <script>
 import Sidebar from "@/components/user/Sidebar";
 import Topbar from "@/components/user/Topbar";
-import Content from "@/components/user/Content";
 
 export default {
   components: {
     Sidebar,
-    Topbar,
-    Content
+    Topbar
   }
 };
 </script>
@@ -25,21 +23,11 @@ export default {
 <style scoped>
 #dashboard {
   display: flex;
+  height: 100vh;
 }
 
 .main {
-  background: #a1ffce; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #faffd1,
-    #a1ffce
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #faffd1,
-    #a1ffce
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: #9aecdb;
   width: calc(100%-300px);
   position: relative;
   left: 300px;
