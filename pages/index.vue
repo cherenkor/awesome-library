@@ -1,59 +1,73 @@
 <template>
-  <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        awesome-library
-      </h1>
-      <h2 class="subtitle">
-        Awesome Library - choose books and track your reading progress
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
+  <section class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="logo-title col-6 text-center">
+        <h1>Awesome {{getName}} Library</h1>
       </div>
+    </div>
+    <div class="row navigation">
+        <nuxt-link tag="div" to="/library" id="left-side" class="col-6">
+          <span>Library</span>
+        </nuxt-link>
+        <nuxt-link tag="div" to="/profile" id="right-side" class="col-6">
+          <span>Profile</span>
+        </nuxt-link>
     </div>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
+  components: {},
+  computed: {
+    getName() {
+      return this.$store.getters.getName || "name";
+    }
   }
-}
+};
 </script>
 
-<style>
-.container
-{
-  min-height: 100vh;
+<style scoped>
+.logo-title {
+  position: absolute;
+  width: 60%;
+  text-align: center;
+  color: #ffffff;
+  padding: 32px;
+  z-index: 2;
+  background-color: #2ecc71;
+  border-radius: 0 0 10px 10px;
+}
+.navigation,
+.navigation div {
+  height: 100vh;
+}
+#left-side,
+#right-side {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  color: #ffffff;
+  font-size: 52px;
+  cursor: pointer;
+  background: no-repeat center;
+  transition: background 0.2s ease-in-out;
+  text-decoration: underline;
 }
-.title
-{
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+#left-side {
+  background-color: #256a74;
 }
-.subtitle
-{
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+#right-side {
+  background-color: #f0932b;
 }
-.links
-{
-  padding-top: 15px;
+#left-side:hover,
+#right-side:hover {
+  color: transparent;
+}
+#left-side:hover {
+  background: url("~assets/img/library.png") no-repeat center, #ffbe76;
+}
+#right-side:hover {
+  background: url("~assets/img/profile.png") no-repeat center, #9aecdb;
 }
 </style>
