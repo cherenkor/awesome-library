@@ -94,6 +94,17 @@ const state = {
   user: {
     settings: {}
   },
+  quotes: [
+    "An investment in knowledge pays the best interest (Benjamin Franklin)",
+    "Real knowledge is to know the extent of one's ignorance. (Confucius)",
+    "The aim of education is the knowledge, not of facts, but of values. (William S. Burroughs)",
+    "The true sign of intelligence is not knowledge but imagination. (Albert Einstein)",
+    "Knowledge will give you power, but character respect. (Bruce Lee)",
+    "We are all born ignorant, but one must work hard to remain stupid. (Benjamin Franklin)",
+    "The only source of knowledge is experience. Albert Einstein",
+    "A thorough knowledge of the Bible is worth more than a college education. (Theodore Roosevelt)",
+    "A good decision is based on knowledge and not on numbers. (Plato)"
+  ],
   filteredBooks: [],
   filtersActive: false,
   currentActiveFilter: ""

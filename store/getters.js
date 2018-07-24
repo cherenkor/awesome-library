@@ -13,6 +13,9 @@ const getters = {
   },
   getCurrentActiveFilter(state) {
     return state.currentActiveFilter;
+  },
+  getQuotes(state) {
+    return state.quotes;
   }
 };
 
