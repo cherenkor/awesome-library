@@ -1,8 +1,55 @@
 <template>
   <div>
+        <rotate-loader class="spinner" :size="'40px'" :color="'#ffa055'" :loading="isLoading"></rotate-loader>
+
     <nuxt/>
   </div>
 </template>
+
+<script>
+import RotateLoader from "vue-spinner/src/RotateLoader";
+import { mapState } from "vuex";
+
+alertify.defaults = {
+  transition: "pulse",
+  // notifier defaults
+  notifier: {
+    // auto-dismiss wait time (in seconds)
+    delay: 3,
+    // default position
+    position: "top-right"
+  },
+  glossary: {
+    // dialogs default title
+    title: "Awesome Library",
+    // ok button text
+    ok: "Sent",
+    // cancel button text
+    cancel: "Cancel"
+  },
+
+  // theme settings
+  theme: {
+    // class name attached to prompt dialog input textbox.
+    input: "ajs-input",
+    // class name attached to ok button
+    ok: "ajs-ok",
+    // class name attached to cancel button
+    cancel: "ajs-cancel"
+  }
+};
+
+export default {
+  components: {
+    RotateLoader
+  },
+  computed: {
+    ...mapState({
+      isLoading: state => state.network.isLoading
+    })
+  }
+};
+</script>
 
 <style>
 body {
@@ -14,6 +61,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  background-color: #9aecdb;
 }
 *,
 *:before,
@@ -67,5 +115,17 @@ body {
   box-shadow: inherit;
   padding: inherit;
   vertical-align: inherit;
+}
+.spinner {
+  width: fit-content;
+  margin: auto;
+  padding: 20px 0 0 300px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 99;
 }
 </style>

@@ -3,7 +3,7 @@
         <Sidebar/>
         <div class="main">
             <Topbar/>
-            <nuxt/>
+            <nuxt id="content"/>
         </div>
     </div>
 </template>
@@ -23,7 +23,6 @@ export default {
 <style scoped>
 #dashboard {
   display: flex;
-  height: 100vh;
 }
 
 .main {
@@ -31,5 +30,10 @@ export default {
   width: calc(100%-300px);
   position: relative;
   left: 300px;
+}
+
+#content {
+  margin-top: 100px;
+  height: 100vh;
 }
 </style>

@@ -1,13 +1,11 @@
 <template>
     <div :style="internalStyle" class="add">
-        <i v-if="bookAdded" @click.prevent.stop="removeBook(bookId)" class="fas fa-check-circle"></i>
-        <i v-else @click.prevent.stop="saveBook(bookId)" class="fas fa-plus-circle"></i>
+        <i v-if="bookAdded" @click.prevent.stop="removeBook" class="fas fa-check-circle"></i>
+        <i v-else @click.prevent.stop="saveBook" class="fas fa-plus-circle"></i>
     </div>
 </template>
 
 <script>
-import * as emailjs from "emailjs-com";
-
 export default {
   props: {
     bookAdded: {
@@ -24,28 +22,19 @@ export default {
     }
   },
   methods: {
-    saveBook(bookId) {
-      const book = this.$store.getters.getAllBooks.filter(
-        book => book.id == bookId
-      )[0];
-      const templateParams = {
-        book_title: book.title,
-        book_author: book.author
-      };
-      emailjs.init("user_fVCgwoD3pke2vl66QgyWs");
-      emailjs.send("gmail", "template_AQ4gOBDz", templateParams).then(
-        response => {
-          console.log("SUCCESS!", response.status, response.text);
-        },
-        err => {
-          console.log("FAILED...", err);
-        }
-      );
+    saveBook() {
+      const book = this.$store.getters.getBooksMap[this.bookId];
 
-      this.$store.commit("saveBook", bookId);
+      alertify.success(`${book.title} was saved in Profile`, 8, () => {});
+
+      this.$store.commit("saveBook", this.bookId);
     },
-    removeBook(bookId) {
-      this.$store.commit("removeBook", bookId);
+    removeBook() {
+      const book = this.$store.getters.getAllBooks.filter(
+        book => book.id == this.bookId
+      )[0];
+      alertify.error(`${book.title} was DELETED`, 5);
+      this.$store.commit("removeBook", this.bookId);
     }
   }
 };

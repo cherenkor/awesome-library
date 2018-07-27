@@ -77,6 +77,12 @@ const mutations = {
   disableFilters(state) {
     state.currentActiveFilter = "";
     state.filtersActive = disable;
+  },
+  /*
+  ** Network
+  */
+  toogleLoadingStatus(state) {
+    state.network.isLoading = !state.network.isLoading;
   }
 };
 

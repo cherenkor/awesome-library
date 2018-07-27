@@ -5,6 +5,12 @@ const getters = {
   getAllUserBooks(state) {
     return state.books.filter(book => book.added == true);
   },
+  getBooksMap(state, getters) {
+    return getters.getAllBooks.reduce((acc, book) => {
+      acc[book.id] = { title: book.title, author: book.author };
+      return acc;
+    }, {});
+  },
   getFilteredBooks(state) {
     return state.filteredBooks;
   },

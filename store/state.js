@@ -26,7 +26,7 @@ const state = {
         views: 5,
         rating: 2
       },
-      added: true,
+      added: false,
       status: "",
       completeDate: ""
     },
@@ -86,7 +86,7 @@ const state = {
         views: 1,
         rating: 3
       },
-      added: false,
+      added: true,
       status: "",
       completeDate: ""
     }
@@ -107,7 +107,10 @@ const state = {
   ],
   filteredBooks: [],
   filtersActive: false,
-  currentActiveFilter: ""
+  currentActiveFilter: "",
+  network: {
+    isLoading: false
+  }
 };
 
 export default state;

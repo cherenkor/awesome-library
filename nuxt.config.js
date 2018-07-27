@@ -28,7 +28,30 @@ module.exports = {
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css?family=Acme"
+      },
+      {
+        rel: "stylesheet",
+        href:
+          "//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/alertify.min.css"
+      },
+      {
+        rel: "stylesheet",
+        href:
+          "//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/themes/default.min.css"
+      },
+      {
+        rel: "stylesheet",
+        href:
+          "//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/themes/semantic.min.css"
+      },
+      {
+        rel: "stylesheet",
+        href:
+          "//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/themes/bootstrap.min.css"
       }
+    ],
+    script: [
+      { src: "//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/alertify.min.js" }
     ]
   },
 

@@ -3,8 +3,9 @@
       <transition-group tag="div" class="books-wrap" name="fade" mode="out-in">
         <div @click.prevent="updateBookViews(book.id)" class="book-item" v-for="book in books" :key="book.id">
             <div class="book-preview"><img :src="book.image" /></div>
-            <div class="info d-flex justify-content-around align-items-end">
+            <div class="info d-flex justify-content-around align-items-center">
               <p class="views">Views: {{book.filters.views}}</p>
+              <send-on-email-button :bookId="book.id"/>
               <add-remove-button title="Add to Read" :bookAdded="book.added" :bookId="book.id"/>
             </div>
         </div>
@@ -14,6 +15,7 @@
 
 <script>
 import AddRemoveButton from "@/components/shared/AddRemoveButton";
+import SendOnEmailButton from "@/components/shared/SendOnEmailButton";
 
 export default {
   props: {
@@ -23,7 +25,8 @@ export default {
     }
   },
   components: {
-    AddRemoveButton
+    AddRemoveButton,
+    SendOnEmailButton
   },
   methods: {
     updateBookViews(bookId) {
@@ -44,7 +47,6 @@ export default {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  margin-bottom: 40px;
   padding: 0 30px;
 }
 
@@ -52,7 +54,7 @@ export default {
   width: 280px;
   height: 380px;
   cursor: pointer;
-  margin: 40px 20px;
+  margin: 20px 20px;
   background-color: #4ac694;
   -webkit-box-shadow: 10px 9px 5px -2px rgba(0, 0, 0, 0.37);
   -moz-box-shadow: 10px 9px 5px -2px rgba(0, 0, 0, 0.37);
@@ -79,7 +81,7 @@ export default {
   font-family: "Acme", sans-serif;
   color: bisque;
   padding: 0;
-  margin-right: 50px;
+  margin: 0 50px 0 0;
   font-size: 26px;
   cursor: pointer;
   transition: all 0.5s;

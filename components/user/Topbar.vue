@@ -17,21 +17,25 @@ export default {
     notify() {
       console.log("DONE");
 
-      if (!("Notification" in window)) {
-        alert("This browser does not support desktop notification");
-      } else if (Notification.permission === "granted") {
-        // Let's check whether notification permissions have already been granted
-        // If it's okay let's create a notification
-        var notification = new Notification("Hi there!");
-      } else if (Notification.permission !== "denied") {
-        // Otherwise, we need to ask the user for permission
-        Notification.requestPermission(function(permission) {
-          // If the user accepts, let's create a notification
-          if (permission === "granted") {
-            var notification = new Notification("Hi there!");
-          }
-        });
-      }
+      alertify.notify("sample", "success", 5, function() {
+        console.log("dismissed");
+      });
+
+      // if (!("Notification" in window)) {
+      //   alert("This browser does not support desktop notification");
+      // } else if (Notification.permission === "granted") {
+      //   // Let's check whether notification permissions have already been granted
+      //   // If it's okay let's create a notification
+      //   var notification = new Notification("Hi there!");
+      // } else if (Notification.permission !== "denied") {
+      //   // Otherwise, we need to ask the user for permission
+      //   Notification.requestPermission(function(permission) {
+      //     // If the user accepts, let's create a notification
+      //     if (permission === "granted") {
+      //       var notification = new Notification("Hi there!");
+      //     }
+      //   });
+      // }
     }
   },
   mounted() {
@@ -58,6 +62,7 @@ export default {
   align-items: center;
   text-align: center;
   vertical-align: middle;
+  position: absolute;
 }
 
 @-webkit-keyframes scroll {
